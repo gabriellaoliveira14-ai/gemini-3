@@ -1,46 +1,67 @@
+:root {
+    --bg-primary: #FFFFFF;
+    --text-primary: #183C63;
+    --header-bg: #183C63;
+    --header-text: #FFFFFF;
+    --card-bg: #F4F6F8;
+}
+
+/* Suporte automático ao modo escuro do sistema */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #121212;
+        --text-primary: #E0E0E0;
+        --header-bg: #0D2137;
+        --header-text: #FFFFFF;
+        --card-bg: #1E1E1E;
+    }
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0 16px; /* Espaçamento lateral em telas pequenas */
+}
+
 header {
-    background-color: #183C63;
-    color: #FFFFFF;
+    background-color: var(--header-bg);
+    color: var(--header-text);
     text-align: center;
     max-width: 800px;
-    margin: 0 auto;
-    padding: 16px;
+    margin: 0 auto 24px auto;
+    padding: 24px 16px;
+    border-radius: 0 0 8px 8px;
 }
 
 main {
-    background-color: #FFFFFF;
-    color: #183C63;
     max-width: 800px;
     margin: 0 auto;
-    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaço entre cada postagem */
 }
 
 article {
     display: flex;
+    align-items: center;
+    gap: 16px; /* Separar a imagem do texto */
+    background-color: var(--card-bg);
+    padding: 16px;
+    border-radius: 8px;
 }
 
 img {
     width: 80px;
     height: 80px;
+    object-fit: cover; /* Impede que a imagem distorça */
+    border-radius: 6px;
 }
 
 .artigo-autor {
     font-weight: bold;
-}<link rel="stylesheet" href="style.css">
-const botoes = document.querySelectorAll("button");
-
-botoes.forEach(function (botao) {
-    let curtiu = false;
-    botao.addEventListener("click", botaoClicado);
-    function botaoClicado() {
-        console.log("fui clicado");
-        let texto = botao.querySelector("span");
-        if (curtiu === false) {
-            texto.textContent++;
-            curtiu = true;
-        } else {
-            texto.textContent--;
-            curtiu = false;
-        }
-    }
-});<script src="script.js"></script>
+    display: block;
+    margin-top: 8px;
+}
